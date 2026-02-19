@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background:#0a1628;
+  display:flex; align-items:center; justify-content:center;
+  min-height:100vh; overflow:hidden;
+  font-family:'Fredoka One',cursive; user-select:none;
+}
+
+#game-wrapper {
+  position:relative; width:420px; height:700px;
+  border-radius:28px; overflow:hidden;
+  box-shadow:0 0 80px rgba(255,220,0,0.3),0 0 160px rgba(80,40,200,0.2);
+}
+
+#canvas { display:block; cursor:none; }
+
+/* ── HUD ── */
+#hud {
+  position:absolute; top:0; left:0; right:0;
+  pointer-events:none; padding:12px 12px 0;
+  display:flex; flex-direction:column; gap:6px;
+}
+
+#score-bar { display:flex; gap:8px; }
+
+.score-pill {
+  background:rgba(50,20,150,0.92);
+  border:2px solid rgba(255,255,255,0.2);
+  border-radius:14px; padding:5px 8px;
+  display:flex; align-items:center; gap:5px; flex:1;
+  backdrop-filter:blur(6px);
+  box-shadow:0 3px 10px rgba(0,0,0,0.4);
+}
+
+.pill-icon { font-size:18px; line-height:1; }
+.pill-num  { font-size:16px; color:#fff; font-family:'Fredoka One'; }
+
+#food-remaining {
+  text-align:center; color:rgba(255,255,255,0.8);
+  font-size:13px; font-family:'Nunito',sans-serif;
+}
+
+#size-badge {
+  position:absolute; bottom:52px; left:50%;
+  transform:translateX(-50%);
+  background:rgba(50,20,150,0.92); color:#fff;
+  border-radius:20px; padding:4px 20px; font-size:17px;
+  border:2px solid rgba(255,255,255,0.25);
+  pointer-events:none; white-space:nowrap;
+}
+
+#size-badge.pulse { animation:sizePulse 0.35s ease; }
+
+@keyframes sizePulse {
+  0%  { transform:translateX(-50%) scale(1); }
+  50% { transform:translateX(-50%) scale(1.4); }
+  100%{ transform:translateX(-50%) scale(1); }
+}
+
+#controls-hint {
+  position:absolute; bottom:10px; left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,0.35); font-size:11px;
+  font-family:'Nunito',sans-serif; white-space:nowrap; pointer-events:none;
+}
+
+/* ── Overlay ── */
+#overlay-screen {
+  position:absolute; inset:0;
+  background:rgba(6,3,20,0.93);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:14px; backdrop-filter:blur(12px);
+  border-radius:28px; padding:30px 24px;
+}
+
+#overlay-screen h1 {
+  font-size:52px; color:#ffe600;
+  text-shadow:0 0 28px #ffa500,0 4px 0 #a06000;
+  letter-spacing:2px; text-align:center;
+}
+
+.subtitle {
+  font-size:16px; color:rgba(255,255,255,0.78);
+  font-family:'Nunito',sans-serif; text-align:center;
+}
+
+.score-card {
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.14);
+  border-radius:20px; padding:18px 28px;
+  text-align:center; width:100%;
+}
+
+.score-card .big-score {
+  font-size:56px; color:#ffe600;
+  text-shadow:0 0 18px rgba(255,200,0,0.7); display:block;
+}
+
+.score-card .breakdown {
+  font-size:20px; color:rgba(255,255,255,0.82);
+  margin-top:5px; font-family:'Nunito',sans-serif;
+}
+
+.score-card .meta {
+  font-size:13px; color:rgba(255,255,255,0.45);
+  margin-top:6px; font-family:'Nunito',sans-serif;
+}
+
+.btn-row { display:flex; gap:12px; width:100%; margin-top:8px; }
+
+.big-btn {
+  flex:1; border:none; border-radius:28px;
+  padding:14px 10px; font-size:20px;
+  font-family:'Fredoka One'; cursor:pointer;
+  transition:transform 0.12s; pointer-events:all;
+  display:flex; align-items:center; justify-content:center; gap:6px;
+}
+
+.big-btn:hover  { transform:scale(1.06); }
+.big-btn:active { transform:scale(0.95); }
+
+.btn-play  { background:linear-gradient(135deg,#ff6b35,#ffcc00); color:#1a0a2e; box-shadow:0 6px 22px rgba(255,140,0,0.5); }
+.btn-share { background:linear-gradient(135deg,#1da1f2,#0d6efd); color:#fff; box-shadow:0 6px 22px rgba(29,161,242,0.4); }
+
+.eat-popup {
+  position:absolute; font-family:'Fredoka One'; font-size:22px;
+  color:#ffe600; text-shadow:0 2px 8px rgba(0,0,0,0.6);
+  pointer-events:none; animation:floatUp 0.85s ease forwards; z-index:200;
+}
+
+@keyframes floatUp {
+  0%  { opacity:1; transform:translateY(0) scale(1); }
+  100%{ opacity:0; transform:translateY(-70px) scale(1.4); }
+}

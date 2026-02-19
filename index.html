@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jelly Hole 🕳️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="game-wrapper">
+  <canvas id="canvas" width="420" height="700"></canvas>
+
+  <div id="hud">
+    <div id="score-bar">
+      <div class="score-pill"><span class="pill-icon">🍔</span><span class="pill-num" id="cnt-burger">0</span></div>
+      <div class="score-pill"><span class="pill-icon">🍕</span><span class="pill-num" id="cnt-pizza">0</span></div>
+      <div class="score-pill"><span class="pill-icon">🍣</span><span class="pill-num" id="cnt-sushi">0</span></div>
+      <div class="score-pill"><span class="pill-icon">🍗</span><span class="pill-num" id="cnt-chicken">0</span></div>
+      <div class="score-pill"><span class="pill-icon">⭐</span><span class="pill-num" id="cnt-score">0</span></div>
+    </div>
+    <div id="food-remaining"></div>
+  </div>
+
+  <div id="size-badge">Size <span id="size-num">1</span></div>
+  <div id="controls-hint">🖱️ Mouse &nbsp;·&nbsp; ⌨️ WASD / Arrow Keys</div>
+
+  <div id="overlay-screen">
+    <h1>🕳️ Jelly Hole</h1>
+    <p class="subtitle">Guide the hole over food to eat it.<br>Eat <strong>everything</strong> to win! 🍔🍕🍣🍗</p>
+    <p class="subtitle" style="font-size:12px;opacity:0.5;margin-top:-4px;">🖱️ Mouse &nbsp;|&nbsp; ⌨️ WASD / Arrow Keys</p>
+    <div class="btn-row" style="margin-top:12px;">
+      <button class="big-btn btn-play" id="start-btn">▶ PLAY</button>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
